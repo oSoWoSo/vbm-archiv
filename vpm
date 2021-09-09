@@ -13,7 +13,7 @@
 # see LICENSE file for license information.
 
 # set version number
-version="1.2c"
+version="1.4"
 
 # disable verbosity, by default
 # verbose=false
