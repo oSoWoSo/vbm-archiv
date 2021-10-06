@@ -1,4 +1,5 @@
 # vpm - An XBPS package management helper for VoidLinux
+version 1.3.1
 
 `vpm` is a simple to use, daily-driver enhancement to the awesome XBPS (X Binary
 Package System), initially designed as a helper tool for use with VoidLinux.
@@ -12,19 +13,19 @@ That's it.
 
 vpm...
 
-![vpm](https://raw.githubusercontent.com/oSoWoSo/vpm/master/screenshots/vpm1.png)
+![vpm](https://codeberg.org/oSoWoSo/vpm/raw/branch/main/screenshots/vpm1.png)
 
 vpm trying install package but...
 
-![try](https://raw.githubusercontent.com/oSoWoSo/vpm/master/screenshots/vpm2.png)
+![try](https://codeberg.org/oSoWoSo/vpm/raw/branch/main/screenshots/vpm2.png)
 
 vpm automatic updating xbps while updating system...
 
-![xbps](https://raw.githubusercontent.com/oSoWoSo/vpm/master/screenshots/vpm3.png)
+![xbps](https://codeberg.org/oSoWoSo/vpm/raw/branch/main/screenshots/vpm3.png)
 
 vpm installing package...
 
-![xbps](https://raw.githubusercontent.com/oSoWoSo/vpm/master/screenshots/vpm4.png)
+![xbps](https://codeberg.org/oSoWoSo/vpm/raw/branch/main/screenshots/vpm4.png)
 
 # Motivation to write vpm
 
@@ -38,18 +39,21 @@ some other user-friendly repository/package-managers.
 # Dependencies
 
 vpm requires BASH, the Bourne Again SHell, which should be installed by default
-on a new VoidLinux system. You also will need git to obtain a clone of the vpm
-GitHub repository (see "Installation" section, below).
+on a new VoidLinux system. You also will need git and xcheckrestart both provided
+by xtools package to obtain a clone of the vpm GitHub repository.
+(see "Installation" section, below).
+
+Or you can just grab vpm and paste it anywhere in your system.
 
 # Installation
 
-### 1. Install git via `xbps-install`
+### 1. Install xtools via `xbps-install`
 
-    $ xbps-install -S git
+    $ xbps-install -S xtools    
 
 ### 2. Clone vpm repository
 
-    $ git clone git://github.com/oSoWoSo/vpm.git
+    $ git clone https://codeberg.org/oSoWoSo/vpm.git
 
 ### 3. Enter the cloned repo and install vpm
 
@@ -61,9 +65,6 @@ GitHub repository (see "Installation" section, below).
 If you want to remove vpm, just use make to remove it. Make sure you are in the cloned directory first, then run:
 
     $ make uninstall
-
-# Author
-vpm was written by Armin Jenewein (GitHub: @netzverweigerer) <vpm@m2m.pm>
 
 # ZOMG! PONIES!!111
 
@@ -97,8 +98,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ```
 
-# Author
+# Authors
 
-- vpm was written by Armin Jenewein (GitHub: @netzverweigerer) <vpm@m2m.pm>
-- forked by Dave Eddy (GitHub: @bahamas10) <dave@daveeddy.com>
-- this fork by zenobit (GitHub: @zen0bit) <b0yc8wrv7@relay.firefox.com>
+- https://github.com/netzverweigerer/vpm - vpm was written by Armin Jenewein <vpm@m2m.pm>
+- https://github.com/bahamas10/vpm - forked by Dave Eddy <dave@daveeddy.com>
+- https://codeberg.org/oSoWoSo/vpm - and this fork by zenobit <osowoso@protonmail.com>
