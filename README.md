@@ -103,3 +103,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 - https://github.com/netzverweigerer/vpm - vpm was written by Armin Jenewein <vpm@m2m.pm>
 - https://github.com/bahamas10/vpm - forked by Dave Eddy <dave@daveeddy.com>
 - https://codeberg.org/oSoWoSo/vpm - and this fork by zenobit <osowoso@protonmail.com>
+
+repos mirrored at: github.com, gitlab.com and disroot.org more mirrors will come...
