@@ -57,8 +57,8 @@ Or you can just grab vpm and paste it anywhere in your system.
 
 ### 3. Enter the cloned repo and install vpm
 
-        $ cd vpm
-        $ make install
+    $ cd vpm
+    $ make install
         
 ### 3a. Remove vpm
 
@@ -104,4 +104,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 - https://github.com/bahamas10/vpm - forked by Dave Eddy <dave@daveeddy.com>
 - https://codeberg.org/oSoWoSo/vpm - and this fork by zenobit <osowoso@protonmail.com>
 
-repos mirrored at: github.com, gitlab.com and disroot.org more mirrors will come...
+# Mirrors
+
+- repos mirrored at:
+- 'https://github.com/oSoWoSo/vpm'
+- 'https://gitlab.com/linux15/void/vpm'
+- 'https://git.disroot.org/oSoWoSo/vpm'
+- more mirrors will come...
