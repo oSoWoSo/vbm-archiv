@@ -569,8 +569,8 @@ case "$cmd" in
       exit 1
     fi
 
-    msg -n "relaying to xlocate - use xlocate -S to (re-)build cached DB. "
-    wrapcommand xlocate "$@"
+#    msg -n "relaying to xlocate - use xlocate -S to (re-)build cached DB. "
+    wrapcommand xlocate -S && xlocate "$@"
   ;;
 
   ''|*)
