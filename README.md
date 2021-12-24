@@ -48,6 +48,7 @@ Or you can just grab vpm and paste it anywhere in your system.
 # Installation
 
 ### 1. Install xtools via `xbps-install`
+### for xcheckrestart functions etc...
 
     $ xbps-install -S xtools    
 
@@ -58,6 +59,7 @@ Or you can just grab vpm and paste it anywhere in your system.
 ### 3. Enter the cloned repo and install vpm
 
     $ cd vpm
+    $ chmod +x vpm
     $ make install
         
 ### 3a. Remove vpm
