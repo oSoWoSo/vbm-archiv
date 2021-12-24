@@ -1,6 +1,6 @@
 #!/bin/bash
 # vim: ft=sh ts=2 sw=2 sts=2 et
-# vpm - void package management utility for
+# vbm - vb-linux management utility for
 # XBPS, the X Binary Package System
 # Copyright (c) 2016 Armin Jenewein <a@m2m.pm>, GitHub: @netzverweigerer
 # Copyright (c) 2019 Dave Eddy <dave@daveeddy.com>, GitHub: @bahamas10
@@ -13,7 +13,7 @@
 version="1.3.1"
 # disable verbosity, by default
 # verbose=false
-# VPM color definitions
+# VBM color definitions
 numcolorok=2
 numcolorfail=1
 numcolorlogo=5
@@ -92,7 +92,7 @@ getlogo () {
     "$colorreset"
 }
 
-# prints a message (with vpm-prefix)
+# prints a message (with vbm-prefix)
 msg () {
   local logo=$(getlogo)
   local newline=true
@@ -133,7 +133,7 @@ banner () {
   echo -n "$colorlogo"
   echo -n '  \_/| .__/_|_|_|'
   echo -n "$colorgray"
-  echo '  Source: https://codeberg.org/oSoWoSo/vpm'
+  echo '  Source: https://codeberg.org/oSoWoSo/vbm'
   echo -n "$colorlogo"
   echo '     |/          '
   echo '     ´          '
