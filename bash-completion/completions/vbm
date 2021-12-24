@@ -1,6 +1,6 @@
 source /usr/share/bash-completion/completions/xbps
 
-_vpm()
+_vbm()
 {
     local cur prev words cword
     _init_completion || return
@@ -40,4 +40,5 @@ _vpm()
         COMPREPLY=( $(compgen -W '$(_xbps_installed_packages)' -- "$cur") )
     fi
 } &&
-complete -F _vpm vpm
+complete -F _vbm vbm
+
