@@ -11,7 +11,7 @@
 # see LICENSE file for license information.
 
 # set version number
-version="1.4"
+version="1.4.1"
 
 # enable verbosity, by default
 verbose=true
@@ -132,7 +132,7 @@ banner () {
   echo ' __ __/|__ _ __  '
   printf " \\ V / '_ \\ '  \ "
   echo -n "$colorgray"
-  echo "  $progname - An XBPS package management helper for vb-linux and Void linux"
+  echo "  $progname - An XBPS package management helper"
   echo -n "$colorlogo"
   echo -n '  \_/|_,__/_|_|_|'
   echo -n "$colorgray"
