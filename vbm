@@ -210,7 +210,7 @@ usage () {
   t "xbps-query -v -L"
   echo "addrepo (ad) <ARGS>            - Add an additional repository"
   t "xbps-install <ARGS>"
-  echo "about (a) <pkg>                 - Show information about <package>"
+  echo "about (a) <pkg>                - Show information about <package>"
   t "xbps-query -v -R"
   echo "filelist (fl) <pkg>            - Show file-list of <package>"
   t "xbps-query -v -R -f"
@@ -224,6 +224,8 @@ usage () {
   t "xbps-query -v -o \"*/$1\""
   echo "list (ls)                      - List installed packages"
   t "xbps-query -v -l"
+  echo "listw (lw)                     - List installed packages without their version"
+  t "xbps-query -l | awk '{ print $2 }' | xargs -n1 xbps-uhelper getpkgname"
   echo "install (i) <pkg(s)>           - Install <package(s)>"
   t "xbps-install"
   echo "devinstall (di) <pkg(s)>       - Install <package> (and corresponding <package>-devel package(s))"
@@ -356,6 +358,10 @@ case "$cmd" in
         "$colorbrackets" \
         "$colorreset"
     done < <(xbps-query -v -l)
+  ;;
+
+  listw|lw)
+    wrapcommand xbps-query -l | awk '{ print $2 }' | xargs -n1 xbps-uhelper getpkgname
   ;;
 
   listalternative|listalternatives|la)
