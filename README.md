@@ -1,6 +1,6 @@
 ### Changed name from vpm to vbm so it can coexist with original, already in void repos...
 # vbm - An XBPS package management helper for vb-linux and VoidLinux
-version 1.4
+version 1.4.1
 
 `vbm` is a simple to use, daily-driver enhancement to the awesome XBPS (X Binary
 Package System), initially designed as a helper tool for use with VoidLinux.
