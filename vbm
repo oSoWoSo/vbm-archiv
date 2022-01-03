@@ -2,17 +2,20 @@
 # vim: ft=sh ts=2 sw=2 sts=2 et
 # vbm - vb-linux management utility for
 # XBPS, the X Binary Package System
-# Copyright (c) 2016 Armin Jenewein <a@m2m.pm>, GitHub: @netzverweigerer
-# Copyright (c) 2019 Dave Eddy <dave@daveeddy.com>, GitHub: @bahamas10
-# Copyright (c) 2021 zenobit from oSoWoSo <zen@osowoso.xyz>, codeberg.org: @oSoWoSo
+# Copyright (c) 2016 original author: Armin Jenewein <a@m2m.pm>, GitHub: @netzverweigerer
+# Copyright (c) 2019 a lot used from: Dave Eddy <dave@daveeddy.com>, GitHub: @bahamas10
+# Copyright (c) 2021 this fork: zenobit from oSoWoSo <pm@osowoso.xyz>, codeberg.org: @oSoWoSo
 # For more information about XBPS, see:
 # https://github.com/voidlinux/xbps
 # Released under the terms of the GNU general public license, version 3+
 # see LICENSE file for license information.
+
 # set version number
-version="1.3.1"
-# disable verbosity, by default
-# verbose=false
+version="1.4"
+
+# enable verbosity, by default
+verbose=true
+
 # VBM color definitions
 numcolorok=2
 numcolorfail=1
@@ -24,6 +27,7 @@ numcolorpkgcount=8
 numcolordarkgray=11
 numcolorbrackets=6
 progname=${0##*/}
+
 # enable or disable colors based on the argument given, i.e.:
 # setcolors on   # colors on
 # setcolors off  # colors off
@@ -125,26 +129,24 @@ rmsg () {
 
 banner () {
   echo -n "$colorlogo"
-  echo ' __ ___ __ _ __  '
-
+  echo ' __ __/|__ _ __  '
   printf " \\ V / '_ \\ '  \ "
   echo -n "$colorgray"
   echo "  $progname - void package management utility for XBPS"
   echo -n "$colorlogo"
-  echo -n '  \_/| .__/_|_|_|'
+  echo -n '  \_/|_,__/_|_|_|'
   echo -n "$colorgray"
   echo '  Source: https://codeberg.org/oSoWoSo/vbm'
   echo -n "$colorlogo"
-  echo '     |/          '
-  echo '     ´          '
   echo -n "$colorreset"
 }
 
 version () {
   banner
-  msg "$progname - Version: $version"
-  msg "Copyright (c) 2016 Armin Jenewein <a@m2m.pm> (GPLv3+)"
-  msg "zenobit from oSoWoSo <zen@osowoso.xyz>"
+  msg "$progname - Version: $version (GPLv3+)"
+  msg "Copyright (c) 2016 original author: Armin Jenewein <a@m2m.pm>, GitHub: @netzverweigerer"
+  msg "Copyright (c) 2019 a lot used from: Dave Eddy <dave@daveeddy.com>, GitHub: @bahamas10"
+  msg "Copyright (c) 2021 this fork: zenobit from oSoWoSo <pm@osowoso.xyz>, codeberg.org: @oSoWoSo"
   msg "XBPS version: $(xbps-query -v --version | sed 's/GIT: UNSET//')"
 }
 
@@ -181,14 +183,11 @@ wrapcommand() {
 }
 
 usage () {
-  echo
   version
-  echo
   echo -n "$colorheader"
   echo "USAGE: "
   echo -n "$colorgray"
   echo "$progname [OPTIONS] [SUBCOMMANDS] [<ARGS>]"
-  echo
   echo -n "$colorheader"
   echo "OPTIONS: "
   echo -n "$colorgray"
@@ -197,19 +196,11 @@ usage () {
   echo "--help-pager                 - (same as: helppager)"
   echo "--show-translations          - Show XBPS command translations for $progname sub-commands"
   echo "--verbose                    - Verbose mode (shows XBPS command translations during execution)"
-  echo
   echo -n "$colorheader"
   echo "SUBCOMMANDS: "
   echo -n "$colorgray"
-  echo "sync (sy)                      - Synchronize remote repository data"
-  t "xbps-install -S"
-  echo "update (up)                    - Update the system"
-  t "xbps-install -Suv"
-  echo "listrepos (lr)                 - List configured repositories"
-  echo "repolist (rl)                  - Alias for listrepos"
-  t "xbps-query -v -L"
-  echo "addrepo (ad) <ARGS>            - Add an additional repository"
-  t "xbps-install <ARGS>"
+  echo "help                           - Show usage information"
+  echo "helppager (hp)                 - Show usage information (will pipe output to less/more)"
   echo "about (a) <pkg>                - Show information about <package>"
   t "xbps-query -v -R"
   echo "filelist (fl) <pkg>            - Show file-list of <package>"
@@ -222,22 +213,33 @@ usage () {
   t "xbps-query -v -Rs"
   echo "searchfile (sf) <file>         - Search for package containing <file> (local)"
   t "xbps-query -v -o \"*/$1\""
+  echo "whatprovides (wp) <file>       - Search for package containing <file>"
+  t "xlocate <pkg>"
   echo "list (ls)                      - List installed packages"
   t "xbps-query -v -l"
   echo "listw (lw)                     - List installed packages without their version"
   t "xbps-query -l | awk '{ print $2 }' | xargs -n1 xbps-uhelper getpkgname"
+  echo "listalternatives (la)          - List alternative candidates"
+  t "xbps-alternatives -l"
+  echo "listrepos (lr)                 - List configured repositories"
+  echo "repolist (rl)                  - Alias for listrepos"
+  t "xbps-query -v -L"
+  echo "sync (sy)                      - Synchronize remote repository data"
+  t "xbps-install -S"
+  echo "update (up)                    - Update the system"
+  t "xbps-install -Suv"
+  echo "addrepo (ad) <ARGS>            - Add an additional repository"
+  t "xbps-install <ARGS>"
   echo "install (i) <pkg(s)>           - Install <package(s)>"
   t "xbps-install"
   echo "devinstall (di) <pkg(s)>       - Install <package> (and corresponding <package>-devel package(s))"
   t "xbps-install <package> <package>-devel"
-  echo "listalternatives (la)          - List alternative candidates"
-  t "xbps-alternatives -l"
-  echo "setalternative (sa) <pkg(s)    - Set alternative for <package>"
-  t "xbps-alternatives -s"
   echo "reconfigure (rc) <pkg>         - Re-configure installed <package>"
   t "xbps-reconfigure -v"
   echo "forceinstall (fi) <pkg(s)>     - Force installation of <package(s)>"
   t "xbps-install -f"
+  echo "setalternative (sa) <pkg(s)    - Set alternative for <package>"
+  t "xbps-alternatives -s"
   echo "remove (rm) <package(s))       - Remove <package(s)> from the system"
   t "xbps-remove -v "
   echo "removerecursive (rr) <pkg(s)>  - Recursively remove package(s) (and its dependencies)"
@@ -246,11 +248,6 @@ usage () {
   t "xbps-remove -v -O"
   echo "autoremove (ar)                - Remove orphaned packages"
   t "xbps-remove -v -o"
-  echo "whatprovides (wp) <file>       - Search for package containing <file>"
-  t "xlocate <pkg>"
-  echo "help                           - Show usage information"
-  echo "helppager (hp)                 - Show usage information (will pipe output to less/more)"
-  echo
   echo -n "$colorheader"
   echo "XBPS COMPATIBILITY COOLNESS:"
   echo -n "$colorgray"
@@ -259,7 +256,6 @@ usage () {
   echo -n "Example: "
   selected=${f[$RANDOM % ${#f[@]}]}
   echo "$progname ${selected##*-} <ARGS> - see also: /usr/sbin/xbps-*"
-  echo
   echo -n "$colorreset"
 }
 
@@ -361,7 +357,7 @@ case "$cmd" in
   ;;
 
   listw|lw)
-    wrapcommand xbps-query -l | awk '{ print $2 }' | xargs -n1 xbps-uhelper getpkgname
+    xbps-query -l | awk '{ print $2 }' | xargs -n1 xbps-uhelper getpkgname
   ;;
 
   listalternative|listalternatives|la)
