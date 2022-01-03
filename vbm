@@ -2,9 +2,9 @@
 # vim: ft=sh ts=2 sw=2 sts=2 et
 # vbm - vb-linux management utility for
 # XBPS, the X Binary Package System
-# Copyright (c) 2016 original author: Armin Jenewein <a@m2m.pm>, GitHub: @netzverweigerer
-# Copyright (c) 2019 a lot used from: Dave Eddy <dave@daveeddy.com>, GitHub: @bahamas10
-# Copyright (c) 2021 this fork: zenobit from oSoWoSo <pm@osowoso.xyz>, codeberg.org: @oSoWoSo
+# original author: Armin Jenewein <a@m2m.pm>, GitHub: @netzverweigerer
+# a lot used from: Dave Eddy <dave@daveeddy.com>, GitHub: @bahamas10
+# this fork: zenobit from oSoWoSo <pm@osowoso.xyz>, codeberg.org: @oSoWoSo
 # For more information about XBPS, see:
 # https://github.com/voidlinux/xbps
 # Released under the terms of the GNU general public license, version 3+
@@ -144,9 +144,9 @@ banner () {
 version () {
   banner
   msg "$progname - Version: $version (GPLv3+)"
-  msg "Copyright (c) 2016 original author: Armin Jenewein <a@m2m.pm>, GitHub: @netzverweigerer"
-  msg "Copyright (c) 2019 a lot used from: Dave Eddy <dave@daveeddy.com>, GitHub: @bahamas10"
-  msg "Copyright (c) 2021 this fork: zenobit from oSoWoSo <pm@osowoso.xyz>, codeberg.org: @oSoWoSo"
+  msg "original author: Armin Jenewein <a@m2m.pm>, GitHub: @netzverweigerer"
+  msg "a lot used from: Dave Eddy <dave@daveeddy.com>, GitHub: @bahamas10"
+  msg "this fork: zenobit from oSoWoSo <pm@osowoso.xyz>, codeberg.org: @oSoWoSo"
   msg "XBPS version: $(xbps-query -v --version | sed 's/GIT: UNSET//')"
 }
 
