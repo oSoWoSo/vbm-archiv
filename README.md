@@ -14,7 +14,7 @@ That's it.
 
 vbm...
 
-![vbm](https://codeberg.org/oSoWoSo/vbm/raw/branch/main/screenshots/vbm1.png)
+![vbm](https://codeberg.org/oSoWoSo/vbm/raw/branch/main/screenshots/vbm.png)
 
 vbm trying install package but...
 
