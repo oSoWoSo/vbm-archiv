@@ -132,7 +132,7 @@ banner () {
   echo ' __ __/|__ _ __  '
   printf " \\ V / '_ \\ '  \ "
   echo -n "$colorgray"
-  echo "  $progname - void package management utility for XBPS"
+  echo "  $progname - An XBPS package management helper for vb-linux and Void linux"
   echo -n "$colorlogo"
   echo -n '  \_/|_,__/_|_|_|'
   echo -n "$colorgray"
